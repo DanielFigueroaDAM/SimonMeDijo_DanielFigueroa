@@ -5,27 +5,26 @@ import android.media.SoundPool
 import androidx.compose.ui.graphics.Color
 import kotlinx.coroutines.flow.MutableStateFlow
 
-
 object Datos {
 
-        var ronda = MutableStateFlow(0) // La ronda actual del juego
-        var record = MutableStateFlow(0) // El record persistente del juego
-        var estado = MutableStateFlow(Estado.IDLE) // El estado del juego
-        var secuencia = MutableStateFlow(mutableListOf<Colores>()) //La lista de colores que hay en cada ronda
+    var ronda = MutableStateFlow(0) // La ronda actual del juego
+    var estado = MutableStateFlow(Estado.IDLE) // El estado del juego
+    var secuencia = MutableStateFlow(mutableListOf<Colores>()) //La lista de colores que hay en cada ronda
 
-        var currentColorEncendido: MutableStateFlow<Colores?> = MutableStateFlow(null) // El color que se va a encender en cada fase de la ronda
+    var currentColorEncendido: MutableStateFlow<Colores?> = MutableStateFlow(null) // El color que se va a encender en cada fase de la ronda
 
-        lateinit var soundPool: SoundPool
-        var sonidoVerde = 0
-        var sonidoRojo = 0
-        var sonidoAzul = 0
-        var sonidoAmarillo = 0
-        var sonidoError1 = 0
-        var sonidoError2 = 0
-        var sonidoError3 = 0
-        var sonidoError4 = 0
+    lateinit var soundPool: SoundPool
+    var sonidoVerde = 0
+    var sonidoRojo = 0
+    var sonidoAzul = 0
+    var sonidoAmarillo = 0
+    var sonidoError1 = 0
+    var sonidoError2 = 0
+    var sonidoError3 = 0
+    var sonidoError4 = 0
 
 }
+
 
 /**
  *  Estados del juego, para el manejo de botones y texto del panel

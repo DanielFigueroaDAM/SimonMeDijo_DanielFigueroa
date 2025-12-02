@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class MyVM : ViewModel(){
 
@@ -110,8 +111,8 @@ class MyVM : ViewModel(){
      * @author Daniel Figueroa Vidal
      */
     fun comprobarRecord(){
-        if(Datos.ronda.value > Datos.record.value)
-            Datos.record.value = Datos.ronda.value
+        if(Datos.ronda.value > ControllerObj.obtenerRecord().record.value)
+            ControllerObj.actualizarRecord(Datos.ronda.value, Date())
     }
 
 
