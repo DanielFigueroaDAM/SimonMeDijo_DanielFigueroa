@@ -135,7 +135,7 @@ fun Botonera(myVM: MyVM) {
 
             // Contador Derecha, muestra el record
             Text(
-                text = "Récord: "+ControllerObj.obtenerRecord().record.collectAsState().value.toString(),
+                text = "Récord: "+myVM.record.collectAsState().value.toString(),
                 fontSize = 18.sp,
                 modifier = Modifier
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(12.dp))

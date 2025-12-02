@@ -5,10 +5,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import java.util.Date
 
 class MyVM : ViewModel(){
+
+    var record: MutableStateFlow<Int> = MutableStateFlow(0)
 
     var posicion = 0 // Esta es la posición de secuencia de elección del usuario
 
@@ -86,8 +89,8 @@ class MyVM : ViewModel(){
         }else{ // Si el usuario falla la secuencia
 
             Datos.secuencia.value = mutableListOf() // Reiniciamos la secuencia
+            comprobarRecord()// Comprobamos si es record, para actualizarlo si hace falta
             Datos.ronda.value = 0
-            comprobarRecord() // Comprobamos si es record, para actualizarlo si hace falta
             posicion = 0
             Log.d("App", "ERROR")
             Datos.estado.value = Estado.FINALIZADO //Cambiamos el estado para el correcto manejo de botones
@@ -110,10 +113,27 @@ class MyVM : ViewModel(){
      * Comprueba si el record es mayor que la ronda actual
      * @author Daniel Figueroa Vidal
      */
-    fun comprobarRecord(){
-        if(Datos.ronda.value > ControllerObj.obtenerRecord().record.value)
-            ControllerObj.actualizarRecord(Datos.ronda.value, Date())
+    fun comprobarRecord() {
+        val ronda = Datos.ronda.value
+
+        if (ronda > ControllerObj.obtenerRecord().record) {
+
+            // 1. Actualizar “BD”
+            val nuevo = ControllerObj.actualizarRecord(ronda, Date())
+
+            // 2. Actualizar StateFlow del ViewModel
+            record.value = nuevo.record
+
+        } else {
+
+            // 1. Obtener desde “BD”
+            val actual = ControllerObj.obtenerRecord()
+
+            // 2. Actualizar StateFlow
+            record.value = actual.record
+        }
     }
+
 
 
 

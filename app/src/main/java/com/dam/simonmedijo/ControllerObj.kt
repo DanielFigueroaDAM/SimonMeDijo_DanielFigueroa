@@ -8,8 +8,8 @@ object ControllerObj : Conexion {
     }
 
     override fun actualizarRecord(nuevoRecord: Int, fecha: Date): Record {
-        Record.record.value = nuevoRecord
-        Record.fecha.value = fecha
+        Record.record = nuevoRecord
+        Record.fecha = fecha
         return Record
     }
 
