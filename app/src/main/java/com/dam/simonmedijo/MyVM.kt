@@ -9,17 +9,18 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class MyVM(application: Application) : AndroidViewModel(application){
 
-    var record = MutableStateFlow(0) // El record persistente del juego
+    var record = MutableStateFlow(ControllerShPre.obtenerRecord(getApplication()).record) // El record persistente del juego
 
     var posicion = 0 // Esta es la posición de secuencia de elección del usuario
 
 
 
     init {
-        record.value = ControllerShPre.obtenerRecord(application).record // Obtenemos el record de las preferencias
+        record.value = ControllerShPre.obtenerRecord(getApplication()).record // Obtenemos el record de las preferencias
     }
 
     /**
@@ -118,8 +119,10 @@ class MyVM(application: Application) : AndroidViewModel(application){
      * @author Daniel Figueroa Vidal
      */
     fun comprobarRecord(){
-        if(Datos.ronda.value > record.value)
+        if(Datos.ronda.value > ControllerShPre.obtenerRecord(getApplication()).record) {
             record.value = Datos.ronda.value
+            ControllerShPre.actualizarRecord(Datos.ronda.value, Date(), getApplication())
+        }
     }
 
 }

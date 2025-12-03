@@ -49,7 +49,7 @@ object ControllerShPre : Conexion {
         val stringData = record.fecha.toString()
         // actualizamos el record y la fecha en las preferencias
         sharedPreferences.edit{
-            putInt(KEY_RECORD, 0)
+            putInt(KEY_RECORD, record.record)
             putString(KEY_FECHA, stringData)
         }
         return record
