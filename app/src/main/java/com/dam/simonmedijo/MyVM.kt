@@ -5,11 +5,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class MyVM : ViewModel(){
 
+    var record = MutableStateFlow(0) // El record persistente del juego
+
     var posicion = 0 // Esta es la posición de secuencia de elección del usuario
+
+
+
+    init {
+        record.value = ControllerShPre.obtenerRecord()
+    }
 
     /**
      * Comprueba si el color seleccionado por el usuario es el mismo que el de la secuencia
@@ -85,8 +94,8 @@ class MyVM : ViewModel(){
         }else{ // Si el usuario falla la secuencia
 
             Datos.secuencia.value = mutableListOf() // Reiniciamos la secuencia
-            Datos.ronda.value = 0
             comprobarRecord() // Comprobamos si es record, para actualizarlo si hace falta
+            Datos.ronda.value = 0
             posicion = 0
             Log.d("App", "ERROR")
             Datos.estado.value = Estado.FINALIZADO //Cambiamos el estado para el correcto manejo de botones
@@ -110,15 +119,9 @@ class MyVM : ViewModel(){
      * @author Daniel Figueroa Vidal
      */
     fun comprobarRecord(){
-        if(Datos.ronda.value > Datos.record.value)
-            Datos.record.value = Datos.ronda.value
+        if(Datos.ronda.value > record.value)
+            record.value = Datos.ronda.value
     }
-
-
-
-
-
-
 
 }
 

@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 object Datos {
 
         var ronda = MutableStateFlow(0) // La ronda actual del juego
-        var record = MutableStateFlow(0) // El record persistente del juego
         var estado = MutableStateFlow(Estado.IDLE) // El estado del juego
         var secuencia = MutableStateFlow(mutableListOf<Colores>()) //La lista de colores que hay en cada ronda
 
