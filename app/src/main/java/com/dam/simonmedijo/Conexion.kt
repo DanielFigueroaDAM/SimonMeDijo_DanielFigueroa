@@ -1,8 +1,9 @@
 package com.dam.simonmedijo
 
+import android.content.Context
 import java.util.Date
 
 interface Conexion {
-    fun obtenerRecord(): Record
-    fun actualizarRecord(nuevoRecord: Int, fecha: Date): Record
+    fun obtenerRecord(context: Context): Record
+    fun actualizarRecord(nuevoRecord: Int, fecha: Date, context: Context): Record
 }
