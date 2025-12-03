@@ -27,6 +27,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -37,6 +38,8 @@ android {
     buildFeatures {
         compose = true
     }
+
+
 }
 
 dependencies {
@@ -49,28 +52,21 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
 
-    // Kotlin coroutines
+    // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 
-    // Tests JUnit5 + coroutines
+    // ✅ JUnit 4
+    testImplementation("junit:junit:4.13.2")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
+    // Mockito (JUnit 4)
+    testImplementation("org.mockito:mockito-core:5.10.0")
+    testImplementation("org.mockito:mockito-inline:5.2.0") // para mocks de clases finales
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
 
-    // LiveData/Flow testing
-    testImplementation("androidx.arch.core:core-testing:2.2.0")
-
-}
-
-
-// dentro del módulo app (build.gradle.kts)
-tasks.withType<Test>().configureEach {
-    useJUnitPlatform()  // activa JUnit 5
-    reports {
-        junitXml.required.set(true)
-        html.required.set(true)
-    }
+    // Robolectric (solo si realmente lo necesitas)
+    testImplementation("org.robolectric:robolectric:4.11.1")
+    testImplementation("androidx.test:core:1.5.0")
+    testImplementation("io.mockk:mockk:1.13.7")
 }
