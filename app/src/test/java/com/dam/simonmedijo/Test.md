@@ -1,5 +1,4 @@
-Contenido del Archivo Test.mdKotlin# Guía Rápida de Testing en Android: Mocks y Robolectric
-
+## Test
 En el desarrollo de Android, no podemos probar nuestro código de la misma forma que un programa de consola simple. Nuestro código depende de clases, contextos y funcionalidades propias del sistema operativo Android (`Context`, `SharedPreferences`, `Activity`, etc.).
 
 Los tests unitarios se ejecutan en un entorno de Java (la JVM de tu ordenador), no en un dispositivo o emulador Android real. Por lo tanto, si tu código intenta hacer `context.getSharedPreferences(...)`, el test fallará porque la JVM no sabe qué es un `Context`.
