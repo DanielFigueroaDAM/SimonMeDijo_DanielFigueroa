@@ -1,5 +1,6 @@
 package com.dam.simonmedijo
 
+import android.app.Application
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -41,8 +42,8 @@ import kotlin.math.min
 
 //usar job para rompoer la corrutina
 @Composable
-fun IU() {
-    val myVM = MyVM()
+fun IU(application: Application) {
+    val myVM = MyVM(application)
     Botonera(myVM)
 
 }
@@ -278,8 +279,7 @@ fun ejecutarSonido(color: Colores) {
 
 
 
-@Preview(showBackground = true)
 @Composable
-fun ViewAll() {
-    IU()
+fun ViewAll( application: Application) {
+    IU(application)
 }

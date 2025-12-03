@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             SimonMeDijoTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ViewAll()
+                    ViewAll(application)
                 }
             }
         }

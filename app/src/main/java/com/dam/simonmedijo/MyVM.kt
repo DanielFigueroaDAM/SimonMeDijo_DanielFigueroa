@@ -1,14 +1,16 @@
 package com.dam.simonmedijo
 
+import android.app.Application
 import android.util.Log
 import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-class MyVM : ViewModel(){
+class MyVM(application: Application) : AndroidViewModel(application){
 
     var record = MutableStateFlow(0) // El record persistente del juego
 
@@ -17,7 +19,7 @@ class MyVM : ViewModel(){
 
 
     init {
-        record.value = ControllerShPre.obtenerRecord()
+        record.value = ControllerShPre.obtenerRecord(application).record // Obtenemos el record de las preferencias
     }
 
     /**
@@ -99,9 +101,6 @@ class MyVM : ViewModel(){
             posicion = 0
             Log.d("App", "ERROR")
             Datos.estado.value = Estado.FINALIZADO //Cambiamos el estado para el correcto manejo de botones
-//            viewModelScope.launch {
-//                ejecutarSonidoError()
-//            }
         }
 
 
