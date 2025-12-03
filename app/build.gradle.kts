@@ -51,6 +51,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    testImplementation("androidx.test:core:1.5.0")
+
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
@@ -58,15 +60,18 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 
     // ✅ JUnit 4
+    //Web de Junit 4 : https://junit.org/junit4/
     testImplementation("junit:junit:4.13.2")
 
     // Mockito (JUnit 4)
+    // Web de Mockito : https://site.mockito.org/
     testImplementation("org.mockito:mockito-core:5.10.0")
     testImplementation("org.mockito:mockito-inline:5.2.0") // para mocks de clases finales
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.1.0")
-
-    // Robolectric (solo si realmente lo necesitas)
-    testImplementation("org.robolectric:robolectric:4.11.1")
-    testImplementation("androidx.test:core:1.5.0")
     testImplementation("io.mockk:mockk:1.13.7")
+
+    // Robolectric
+    // Web de Robolectric : https://developer.android.com/training/testing/local-tests/robolectric?hl=es-419
+    testImplementation("org.robolectric:robolectric:4.11.1")
+
 }
