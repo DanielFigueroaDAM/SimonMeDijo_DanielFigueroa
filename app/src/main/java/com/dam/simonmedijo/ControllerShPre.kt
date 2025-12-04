@@ -39,11 +39,9 @@ object ControllerShPre : Conexion {
     override fun actualizarRecord(nuevoRecord: Int, fecha: Date, context: Context): Record {
         val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-        // CORRECCIÓN IMPORTANTE: Usa el formateador para convertir Date a String
         val stringData = FORMATO_FECHA.format(fecha)
 
         sharedPreferences.edit {
-            // BUG CORREGIDO: Estabas guardando 0 siempre. Ahora guardas el nuevo récord.
             putInt(KEY_RECORD, nuevoRecord)
             putString(KEY_FECHA, stringData)
         }
