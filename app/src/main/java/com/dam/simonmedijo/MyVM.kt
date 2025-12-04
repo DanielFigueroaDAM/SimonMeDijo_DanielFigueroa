@@ -119,9 +119,9 @@ class MyVM(application: Application) : AndroidViewModel(application){
      * @author Daniel Figueroa Vidal
      */
     fun comprobarRecord(){
-        if(Datos.ronda.value > ControllerShPre.obtenerRecord(getApplication()).record) {
+        if(Datos.ronda.value > ControllerShPre.obtenerRecord(getApplication()).record) { // Se llama al controller para obtener el record
             record.value = Datos.ronda.value
-            ControllerShPre.actualizarRecord(Datos.ronda.value, Date(), getApplication())
+            ControllerShPre.actualizarRecord(Datos.ronda.value, Date(), getApplication()) // Se actualiza en el caso de que sea necesario
         }
     }
 
