@@ -56,9 +56,9 @@ object ControllerShPre : Conexion {
      */
     override fun actualizarRecord(nuevoRecord: Int, fecha: Date, context: Context): Record {
         val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-
+        //Usar el método .format() de nuestro formateador
         val stringData = FORMATO_FECHA.format(fecha)
-
+        // Guardar los datos
         sharedPreferences.edit {
             putInt(KEY_RECORD, nuevoRecord)
             putString(KEY_FECHA, stringData)
