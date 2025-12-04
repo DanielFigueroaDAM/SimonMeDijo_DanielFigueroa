@@ -6,17 +6,27 @@ import java.text.SimpleDateFormat // Importado
 import java.util.Date
 import java.util.Locale             // Importado
 
+/**
+ * En esta clase se implementa la conexión a las preferencias compartidas.
+ * Documentación: https://developer.android.com/training/data-storage/shared-preferences?hl=es-419
+ * @author Daniel Figueroa Vidal
+ */
 object ControllerShPre : Conexion {
-
+    // Nombre del archivo donde se guardaran la información
     private const val PREFS_NAME = "preferencias_app"
-
-    // Vuelve a ser un objeto SimpleDateFormat para poder usar .parse() y .format()
+    //Formate en el que se guardara la fecha
     private val FORMATO_FECHA = SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
 
+    //El nombre de los elementos XML que se guardarán
     private const val KEY_RECORD = "record"
     private const val KEY_FECHA = "fecha"
 
-
+    /**
+     * Obtiene el Record de las preferencias compartidas
+     * @return Record(record,fecha)
+     * @author Daniel Figueroa Vidal
+     * @param context Contexto de la aplicación
+     */
     override fun obtenerRecord(context: Context): Record {
         val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val recordValue: Int = sharedPreferences.getInt(KEY_RECORD, 0)
@@ -36,6 +46,14 @@ object ControllerShPre : Conexion {
         return Record(recordValue, fechaFormateada)
     }
 
+    /**
+     * Actualiza el Record de las preferencias compartidas
+     * @return Record(record,fecha)
+     * @author Daniel Figueroa Vidal
+     * @param nuevoRecord Int
+     * @param fecha Date
+     * @param context Contexto de la aplicación
+     */
     override fun actualizarRecord(nuevoRecord: Int, fecha: Date, context: Context): Record {
         val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
