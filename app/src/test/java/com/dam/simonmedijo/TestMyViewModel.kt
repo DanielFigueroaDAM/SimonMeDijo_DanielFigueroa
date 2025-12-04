@@ -14,6 +14,9 @@ import org.junit.runner.RunWith
 import org.mockito.Mockito.*
 import org.robolectric.RobolectricTestRunner
 import java.util.*
+// Web de Robolectric : https://developer.android.com/training/testing/local-tests/robolectric?hl=es-419
+// Web de Mockito : https://site.mockito.org/
+
 /**
  * Clase de pruebas unitarias para [MyVM].
  * Utiliza Robolectric para emular el entorno de Android y MockK para la creación de mocks.

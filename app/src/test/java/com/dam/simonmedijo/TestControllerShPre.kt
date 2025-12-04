@@ -18,7 +18,7 @@ import org.mockito.kotlin.whenever
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-
+// Web de Mockito : https://site.mockito.org/
 /**
  * Clase de pruebas unitarias para [ControllerShPre].
  * Utiliza Mockito para simular las dependencias de Android como [Context] y [SharedPreferences].
