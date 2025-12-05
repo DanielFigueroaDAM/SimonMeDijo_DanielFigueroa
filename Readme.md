@@ -48,6 +48,58 @@ ViewModel que centraliza la lógica del juego, gestionando la secuencia de color
 
 Contiene la interfaz del juego, incluyendo los botones de colores, el panel de texto, los contadores de ronda y récord, y la reproducción de sonidos según la secuencia y el estado.
 
+
+### 6. Record
+
+`Record` es una **data class** sencilla que encapsula la información del récord del jugador. Guarda dos valores:
+
+* `record`: el número máximo de rondas alcanzadas.
+* `fecha`: la fecha exacta en la que se obtuvo ese récord.
+
+Esta clase permite transportar de manera limpia un objeto único con toda la información del récord.
+Por defecto crea un récord *0* con la fecha actual.
+
+---
+
+### 7. Conexion
+
+`Conexion` es una **interfaz** que define la estructura mínima necesaria para cualquier clase que desee manejar la lectura y escritura del récord del usuario.
+
+Incluye dos funciones:
+
+* `obtenerRecord(context: Context): Record`
+  Recupera los datos almacenados.
+
+* `actualizarRecord(nuevoRecord: Int, fecha: Date, context: Context): Record`
+  Guarda un nuevo récord junto con la fecha en que fue alcanzado.
+
+Su propósito es **desacoplar la lógica de almacenamiento** de la implementación concreta (SharedPreferences en este caso).
+Gracias a esto, si en el futuro quieres guardar el récord en una base de datos, archivo local, o servidor remoto, solo necesitas crear otra clase que implemente esta interfaz.
+
+---
+
+### 8. ControllerShPre
+
+`ControllerShPre` es un **singleton** que implementa la interfaz `Conexion` usando **SharedPreferences** como sistema de almacenamiento.
+
+Su función es administrar de forma persistente el récord del jugador.
+
+### Características importantes de esta clase:
+
+* Usa un archivo llamado `"preferencias_app"` para guardar los datos.
+* Almacena dos valores:
+
+    * `KEY_RECORD`: entero con el récord.
+    * `KEY_FECHA`: cadena con la fecha del récord.
+* Maneja la fecha mediante un `SimpleDateFormat` para poder convertirla entre `String` ↔ `Date`.
+* Implementa:
+
+    * `obtenerRecord()`
+      Lee de SharedPreferences y devuelve un objeto `Record`.
+    * `actualizarRecord()`
+      Guarda el nuevo récord y su fecha.
+
+
 ---
 
 ## Flujo de estados en el código
