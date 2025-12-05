@@ -35,7 +35,7 @@ En el caso de `ControllerShPreTest`, nuestra clase necesita `Context` y `SharedP
 * **Rapidez**: Los tests se ejecutan en la JVM sin necesidad de un emulador, por lo que son muy rápidos.
 
 ---
-
+---
 ## 2. Robolectric: El Mini-Android en tu Ordenador
 
 ### ¿Qué es Robolectric?
