@@ -2,7 +2,7 @@ name: Android Tests
 
 on:
   push:
-    branches: [ "Feature_SharedPreference" ]
+    branches: [ "Feature_SharedPreference","Feature_SQLite" ]
   pull_request:
 
 jobs:
