@@ -56,7 +56,7 @@ object ControllerSQLite : Conexion {
             }
         }
 
-        // 5. ¡MUY IMPORTANTE! Cierra siempre el cursor y la base de datos para liberar recursos.
+        // 5. Cierra siempre el cursor y la base de datos para liberar recursos.
         cursor.close()
         db.close()
 
