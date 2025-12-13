@@ -1,12 +1,10 @@
-package com.dam.simonmedijo
+package com.dam.simonmedijo.view
 
 import android.app.Application
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,15 +27,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import kotlinx.coroutines.Job
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.CoroutineScope
+import com.dam.simonmedijo.model.Colores
+import com.dam.simonmedijo.model.Datos
+import com.dam.simonmedijo.model.Estado
+import com.dam.simonmedijo.ViewModel.MyVM
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlin.math.min
 
 
 //usar job para rompoer la corrutina
@@ -126,7 +123,7 @@ fun Botonera(myVM: MyVM) {
         ) {
             // Contador Izquierda, muestra la ronda actual
             Text(
-                text = "Ronda: "+Datos.ronda.collectAsState().value.toString(),
+                text = "Ronda: "+ Datos.ronda.collectAsState().value.toString(),
                 fontSize = 18.sp,
                 modifier = Modifier
                     .border(2.dp, Color.Black, shape = RoundedCornerShape(12.dp))
@@ -162,7 +159,7 @@ fun Botonera(myVM: MyVM) {
             // Verde
             Button(
                 enabled = botoneraIsActive,
-                onClick = { myVM.colorSeleccionado(Colores.CLASE_VERDE) 
+                onClick = { myVM.colorSeleccionado(Colores.CLASE_VERDE)
                           colorParaSonar = Colores.CLASE_VERDE
                           },
                 modifier = Modifier.size(150.dp).padding(4.dp),

@@ -1,11 +1,13 @@
-package com.dam.simonmedijo
+package com.dam.simonmedijo.ViewModel
 
 import android.app.Application
 import android.util.Log
-import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dam.simonmedijo.model.Colores
+import com.dam.simonmedijo.controller.ControllerSQLite
+import com.dam.simonmedijo.model.Datos
+import com.dam.simonmedijo.model.Estado
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -13,7 +15,8 @@ import java.util.Date
 
 class MyVM(application: Application) : AndroidViewModel(application){
 
-    var record = MutableStateFlow(ControllerSQLite.obtenerRecord(getApplication()).record) // El record persistente del juego
+    var record =
+        MutableStateFlow(ControllerSQLite.obtenerRecord(getApplication()).record) // El record persistente del juego
 
     var posicion = 0 // Esta es la posición de secuencia de elección del usuario
 
@@ -81,7 +84,7 @@ class MyVM(application: Application) : AndroidViewModel(application){
      * @author Daniel Figueroa Vidal
      * @param colorSelect Colores
      */
-    fun colorSeleccionado(colorSelect:Colores){
+    fun colorSeleccionado(colorSelect: Colores){
         //Comprobamos si la elección del usuario es correcta
         if(comprobarEleccionEnSecuencia(colorSelect, posicion)){
             posicion++ // Si es correcta aumentamos la posición
@@ -126,11 +129,3 @@ class MyVM(application: Application) : AndroidViewModel(application){
     }
 
 }
-
-
-
-
-
-
-
-

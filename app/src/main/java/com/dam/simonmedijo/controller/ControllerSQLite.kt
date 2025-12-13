@@ -1,9 +1,10 @@
-package com.dam.simonmedijo
+package com.dam.simonmedijo.controller
 
 import android.content.ContentValues
 import android.content.Context
 import android.provider.BaseColumns
 import android.util.Log
+import com.dam.simonmedijo.model.Record
 import java.util.Date
 
 object miTabla : BaseColumns {

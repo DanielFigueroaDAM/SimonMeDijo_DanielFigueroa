@@ -1,7 +1,12 @@
 package com.dam.simonmedijo
 
 import android.app.Application
-import androidx.test.core.app.ApplicationProvider
+import com.dam.simonmedijo.ViewModel.MyVM
+import com.dam.simonmedijo.controller.ControllerShPre
+import com.dam.simonmedijo.model.Colores
+import com.dam.simonmedijo.model.Datos
+import com.dam.simonmedijo.model.Estado
+import com.dam.simonmedijo.model.Record
 import io.mockk.every
 import io.mockk.justRun
 import io.mockk.mockkObject
@@ -18,10 +23,10 @@ import java.util.*
 // Web de Mockito : https://site.mockito.org/
 
 /**
- * Clase de pruebas unitarias para [MyVM].
+ * Clase de pruebas unitarias para [com.dam.simonmedijo.ViewModel.MyVM].
  * Utiliza Robolectric para emular el entorno de Android y MockK para la creación de mocks.
  * @property app Instancia de la aplicación Android, mockeada para las pruebas.
- * @property viewModel Instancia del ViewModel [MyVM] que se está probando.
+ * @property viewModel Instancia del ViewModel [com.dam.simonmedijo.ViewModel.MyVM] que se está probando.
  */
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(RobolectricTestRunner::class)
@@ -32,7 +37,7 @@ class TestMyViewModel {
     /**
      * Configuración inicial para cada prueba.
      * - Mockea la clase [Application].
-     * - Mockea el objeto [ControllerShPre] para simular la obtención y actualización de récords.
+     * - Mockea el objeto [com.dam.simonmedijo.controller.ControllerShPre] para simular la obtención y actualización de récords.
      * - Inicializa [MyVM] con la aplicación mockeada.
      * - Reinicia los datos del juego (secuencia, estado, ronda, etc.) a su estado inicial.
      */

@@ -5,6 +5,9 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import androidx.test.core.app.ApplicationProvider
+import com.dam.simonmedijo.controller.FeedReaderDbHelper
+import com.dam.simonmedijo.controller.miTabla
+import com.dam.simonmedijo.model.Record
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -26,7 +29,7 @@ import java.util.Date
 // Robolectric: https://robolectric.org/
 
 /**
- * Clase de pruebas unitarias para [ControllerSQLite].
+ * Clase de pruebas unitarias para [com.dam.simonmedijo.controller.ControllerSQLite].
  * Utiliza Robolectric para simular el entorno de Android y Mockito para los mocks.
  */
 @RunWith(RobolectricTestRunner::class)
@@ -70,7 +73,7 @@ class TestControllerSQLite {
     }
 
     /**
-     * Prueba que [ControllerSQLite.obtenerRecord] devuelve correctamente los datos
+     * Prueba que [com.dam.simonmedijo.controller.ControllerSQLite.obtenerRecord] devuelve correctamente los datos
      * cuando existe un registro en la base de datos.
      */
     @Test
@@ -114,7 +117,7 @@ class TestControllerSQLite {
     }
 
     /**
-     * Prueba que [ControllerSQLite.obtenerRecord] devuelve valores por defecto
+     * Prueba que [com.dam.simonmedijo.controller.ControllerSQLite.obtenerRecord] devuelve valores por defecto
      * cuando no hay registros en la base de datos.
      */
     @Test
@@ -154,7 +157,7 @@ class TestControllerSQLite {
     }
 
     /**
-     * Prueba que [ControllerSQLite.actualizarRecord] inserta correctamente
+     * Prueba que [com.dam.simonmedijo.controller.ControllerSQLite.actualizarRecord] inserta correctamente
      * un nuevo registro en la base de datos.
      */
     @Test
@@ -196,7 +199,7 @@ class TestControllerSQLite {
     }
 
     /**
-     * Prueba que [ControllerSQLite.actualizarRecord] maneja correctamente
+     * Prueba que [com.dam.simonmedijo.controller.ControllerSQLite.actualizarRecord] maneja correctamente
      * un error en la inserción (devuelve -1).
      */
     @Test

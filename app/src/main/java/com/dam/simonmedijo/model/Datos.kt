@@ -1,8 +1,9 @@
-package com.dam.simonmedijo
+package com.dam.simonmedijo.model
 
 import android.content.Context
 import android.media.SoundPool
 import androidx.compose.ui.graphics.Color
+import com.dam.simonmedijo.R
 import kotlinx.coroutines.flow.MutableStateFlow
 
 

@@ -1,9 +1,10 @@
-package com.dam.simonmedijo
+package com.dam.simonmedijo.controller
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
+
 // Sentencia SQL para borrar la tabla si existe.
 // Se utiliza en onUpgrade() para eliminar la versión antigua de la tabla.
 private const val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS ${miTabla.TABLE_NAME}"

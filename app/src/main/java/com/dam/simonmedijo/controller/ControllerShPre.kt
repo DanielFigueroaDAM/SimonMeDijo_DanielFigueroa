@@ -1,10 +1,12 @@
-package com.dam.simonmedijo
+package com.dam.simonmedijo.controller
 
 import android.content.Context
 import androidx.core.content.edit
-import java.text.SimpleDateFormat // Importado
+import com.dam.simonmedijo.controller.Conexion
+import com.dam.simonmedijo.model.Record
+import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Locale             // Importado
+import java.util.Locale
 
 /**
  * En esta clase se implementa la conexión a las preferencias compartidas.

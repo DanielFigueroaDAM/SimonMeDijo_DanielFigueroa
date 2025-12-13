@@ -2,6 +2,7 @@ package com.dam.simonmedijo
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.dam.simonmedijo.controller.ControllerShPre
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -20,7 +21,7 @@ import java.util.Date
 import java.util.Locale
 // Web de Mockito : https://site.mockito.org/
 /**
- * Clase de pruebas unitarias para [ControllerShPre].
+ * Clase de pruebas unitarias para [com.dam.simonmedijo.controller.ControllerShPre].
  * Utiliza Mockito para simular las dependencias de Android como [Context] y [SharedPreferences].
  */
 @RunWith(MockitoJUnitRunner::class)
@@ -70,7 +71,7 @@ class TestControllerShPre {
     }
 
     /**
-     * Prueba que [ControllerShPre.obtenerRecord] devuelve correctamente los datos
+     * Prueba que [com.dam.simonmedijo.controller.ControllerShPre.obtenerRecord] devuelve correctamente los datos
      * cuando ya existen un récord y una fecha guardados en SharedPreferences.
      */
     @Test
