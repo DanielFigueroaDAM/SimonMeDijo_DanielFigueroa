@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.dam.simonmedijo.model.Colores
 import com.dam.simonmedijo.controller.ControllerSQLite
+import com.dam.simonmedijo.controller.room.RoomController
 import com.dam.simonmedijo.model.Datos
 import com.dam.simonmedijo.model.Estado
 import kotlinx.coroutines.delay
@@ -15,15 +16,14 @@ import java.util.Date
 
 class MyVM(application: Application) : AndroidViewModel(application){
 
-    var record =
-        MutableStateFlow(ControllerSQLite.obtenerRecord(getApplication()).record) // El record persistente del juego
+    var record = MutableStateFlow(RoomController.obtenerRecord(getApplication()).record) // El record persistente del juego
 
     var posicion = 0 // Esta es la posición de secuencia de elección del usuario
 
 
 
     init {
-        record.value = ControllerSQLite.obtenerRecord(getApplication()).record // Obtenemos el record de las preferencias
+        record.value = RoomController.obtenerRecord(getApplication()).record // Obtenemos el record de las preferencias
     }
 
     /**
@@ -122,9 +122,9 @@ class MyVM(application: Application) : AndroidViewModel(application){
      * @author Daniel Figueroa Vidal
      */
     fun comprobarRecord(){
-        if(Datos.ronda.value > ControllerSQLite.obtenerRecord(getApplication()).record) { // Se llama al controller para obtener el record
+        if(Datos.ronda.value > RoomController.obtenerRecord(getApplication()).record) { // Se llama al controller para obtener el record
             record.value = Datos.ronda.value
-            ControllerSQLite.actualizarRecord(Datos.ronda.value, Date(), getApplication()) // Se actualiza en el caso de que sea necesario
+            RoomController.actualizarRecord(Datos.ronda.value, Date(), getApplication()) // Se actualiza en el caso de que sea necesario
         }
     }
 
