@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Room
 import com.dam.simonmedijo.controller.Conexion
 import com.dam.simonmedijo.model.Record
-import com.dam.simonmedijo.model.RecordEntity
 import java.util.Date
 
 object RoomController: Conexion {
