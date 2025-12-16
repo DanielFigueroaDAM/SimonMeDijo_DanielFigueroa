@@ -3,7 +3,6 @@ package com.dam.simonmedijo.controller.room
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.dam.simonmedijo.model.RecordEntity
 
 /**
  * Esta interfaz se encarga de acceder a la tabla de records de la base de datos
