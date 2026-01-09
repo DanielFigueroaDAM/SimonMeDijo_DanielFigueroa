@@ -1,0 +1,3 @@
+- Fai as mensaxes en "galego"
+- Escribe sempre un mensaxe curto e logo uma descripción máis extensa
+
