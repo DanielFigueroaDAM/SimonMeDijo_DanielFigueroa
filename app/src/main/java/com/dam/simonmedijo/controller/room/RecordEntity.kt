@@ -2,14 +2,15 @@ package com.dam.simonmedijo.controller.room
 
 
 
-// Entidad que representa la tabla en la base de datos(Podría ponerse por separado)
+
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+// Entidad que representa la tabla en la base de datos
 @Entity(tableName = "records")
 data class RecordEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val record: Int,
-    val fecha: Long
+    @PrimaryKey(autoGenerate = true) val id: Int = 0, // Clave primaria autogenerada
+    val record: Int, // El valor del récord
+    val fecha: Long // Fecha del récord
 )
