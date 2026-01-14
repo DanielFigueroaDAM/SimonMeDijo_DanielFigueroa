@@ -1,63 +1,63 @@
 ---
-description: 'Shell scripting best practices and conventions for bash, sh, zsh, and other shells'
+description: 'Mejores prácticas y convenciones de scripting de shell para bash, sh, zsh y otros shells'
 applyTo: '**/*.sh'
 ---
 
-# Shell Scripting Guidelines
+# Directrices de Scripting de Shell
 
-Instructions for writing clean, safe, and maintainable shell scripts for bash, sh, zsh, and other shells.
+Instrucciones para escribir scripts de shell limpios, seguros y mantenibles para bash, sh, zsh y otros shells.
 
-## General Principles
+## Principios Generales
 
-- Generate code that is clean, simple, and concise
-- Ensure scripts are easily readable and understandable
-- Add comments where helpful for understanding how the script works
-- Generate concise and simple echo outputs to provide execution status
-- Avoid unnecessary echo output and excessive logging
-- Use shellcheck for static analysis when available
-- Assume scripts are for automation and testing rather than production systems unless specified otherwise
-- Prefer safe expansions: double-quote variable references (`"$var"`), use `${var}` for clarity, and avoid `eval`
-- Use modern Bash features (`[[ ]]`, `local`, arrays) when portability requirements allow; fall back to POSIX constructs only when needed
-- Choose reliable parsers for structured data instead of ad-hoc text processing
+- Genera código que sea limpio, simple y conciso
+- Asegúrate de que los scripts sean fácilmente legibles y comprensibles
+- Añade comentarios donde sean útiles para entender cómo funciona el script
+- Genera salidas de `echo` concisas y simples para proporcionar el estado de la ejecución
+- Evita salidas de `echo` innecesarias y el registro excesivo
+- Usa `shellcheck` para análisis estático cuando esté disponible
+- Asume que los scripts son para automatización y pruebas en lugar de sistemas de producción, a menos que se especifique lo contrario
+- Prefiere expansiones seguras: comillas dobles en las referencias a variables (`"$var"`), usa `${var}` para mayor claridad y evita `eval`
+- Usa características modernas de Bash (`[[ ]]`, `local`, arrays) cuando los requisitos de portabilidad lo permitan; recurre a construcciones POSIX solo cuando sea necesario
+- Elige analizadores fiables para datos estructurados en lugar de procesamiento de texto ad-hoc
 
-## Error Handling & Safety
+## Manejo de Errores y Seguridad
 
-- Always enable `set -euo pipefail` to fail fast on errors, catch unset variables, and surface pipeline failures
-- Validate all required parameters before execution
-- Provide clear error messages with context
-- Use `trap` to clean up temporary resources or handle unexpected exits when the script terminates
-- Declare immutable values with `readonly` (or `declare -r`) to prevent accidental reassignment
-- Use `mktemp` to create temporary files or directories safely and ensure they are removed in your cleanup handler
+- Habilita siempre `set -euo pipefail` para fallar rápidamente en caso de errores, capturar variables no establecidas y mostrar fallos en las tuberías
+- Valida todos los parámetros requeridos antes de la ejecución
+- Proporciona mensajes de error claros con contexto
+- Usa `trap` para limpiar recursos temporales o manejar salidas inesperadas cuando el script termina
+- Declara valores inmutables con `readonly` (o `declare -r`) para evitar reasignaciones accidentales
+- Usa `mktemp` para crear archivos o directorios temporales de forma segura y asegúrate de que se eliminen en tu manejador de limpieza
 
-## Script Structure
+## Estructura del Script
 
-- Start with a clear shebang: `#!/bin/bash` unless specified otherwise
-- Include a header comment explaining the script's purpose
-- Define default values for all variables at the top
-- Use functions for reusable code blocks
-- Create reusable functions instead of repeating similar blocks of code
-- Keep the main execution flow clean and readable
+- Comienza con un shebang claro: `#!/bin/bash` a menos que se especifique lo contrario
+- Incluye un comentario de encabezado que explique el propósito del script
+- Define los valores predeterminados para todas las variables en la parte superior
+- Usa funciones para bloques de código reutilizables
+- Crea funciones reutilizables en lugar de repetir bloques de código similares
+- Mantén el flujo de ejecución principal limpio y legible
 
-## Working with JSON and YAML
+## Trabajar con JSON y YAML
 
-- Prefer dedicated parsers (`jq` for JSON, `yq` for YAML—or `jq` on JSON converted via `yq`) over ad-hoc text processing with `grep`, `awk`, or shell string splitting
-- When `jq`/`yq` are unavailable or not appropriate, choose the next most reliable parser available in your environment, and be explicit about how it should be used safely
-- Validate that required fields exist and handle missing/invalid data paths explicitly (e.g., by checking `jq` exit status or using `// empty`)
-- Quote jq/yq filters to prevent shell expansion and prefer `--raw-output` when you need plain strings
-- Treat parser errors as fatal: combine with `set -euo pipefail` or test command success before using results
-- Document parser dependencies at the top of the script and fail fast with a helpful message if `jq`/`yq` (or alternative tools) are required but not installed
+- Prefiere analizadores dedicados (`jq` para JSON, `yq` para YAML, o `jq` sobre JSON convertido a través de `yq`) sobre el procesamiento de texto ad-hoc con `grep`, `awk` o la división de cadenas de shell
+- Cuando `jq`/`yq` no estén disponibles o no sean apropiados, elige el siguiente analizador más fiable disponible en tu entorno y sé explícito sobre cómo debe usarse de forma segura
+- Valida que los campos requeridos existan y maneja explícitamente las rutas de datos faltantes/inválidas (p. ej., comprobando el estado de salida de `jq` o usando `// empty`)
+- Cita los filtros de jq/yq para evitar la expansión del shell y prefiere `--raw-output` cuando necesites cadenas de texto sin formato
+- Trata los errores del analizador como fatales: combínalo con `set -euo pipefail` o comprueba el éxito del comando antes de usar los resultados
+- Documenta las dependencias del analizador en la parte superior del script y falla rápidamente con un mensaje útil si `jq`/`yq` (u otras herramientas alternativas) son necesarias pero no están instaladas
 
 ```bash
 #!/bin/bash
 
 # ============================================================================
-# Script Description Here
+# Descripción del Script Aquí
 # ============================================================================
 
 set -euo pipefail
 
 cleanup() {
-    # Remove temporary resources or perform other teardown steps as needed
+    # Elimina recursos temporales o realiza otros pasos de limpieza según sea necesario
     if [[ -n "${TEMP_DIR:-}" && -d "$TEMP_DIR" ]]; then
         rm -rf "$TEMP_DIR"
     fi
@@ -65,7 +65,7 @@ cleanup() {
 
 trap cleanup EXIT
 
-# Default values
+# Valores predeterminados
 RESOURCE_GROUP=""
 REQUIRED_PARAM=""
 OPTIONAL_PARAM="default-value"
@@ -73,18 +73,18 @@ readonly SCRIPT_NAME="$(basename "$0")"
 
 TEMP_DIR=""
 
-# Functions
+# Funciones
 usage() {
-    echo "Usage: $SCRIPT_NAME [OPTIONS]"
-    echo "Options:"
-    echo "  -g, --resource-group   Resource group (required)"
-    echo "  -h, --help            Show this help"
+    echo "Uso: $SCRIPT_NAME [OPCIONES]"
+    echo "Opciones:"
+    echo "  -g, --resource-group   Grupo de recursos (requerido)"
+    echo "  -h, --help            Muestra esta ayuda"
     exit 0
 }
 
 validate_requirements() {
     if [[ -z "$RESOURCE_GROUP" ]]; then
-        echo "Error: Resource group is required"
+        echo "Error: El grupo de recursos es requerido"
         exit 1
     fi
 }
@@ -94,22 +94,22 @@ main() {
 
     TEMP_DIR="$(mktemp -d)"
     if [[ ! -d "$TEMP_DIR" ]]; then
-        echo "Error: failed to create temporary directory" >&2
+        echo "Error: no se pudo crear el directorio temporal" >&2
         exit 1
     fi
     
     echo "============================================================================"
-    echo "Script Execution Started"
+    echo "Ejecución del Script Iniciada"
     echo "============================================================================"
     
-    # Main logic here
+    # Lógica principal aquí
     
     echo "============================================================================"
-    echo "Script Execution Completed"
+    echo "Ejecución del Script Completada"
     echo "============================================================================"
 }
 
-# Parse arguments
+# Analizar argumentos
 while [[ $# -gt 0 ]]; do
     case $1 in
         -g|--resource-group)
@@ -120,13 +120,13 @@ while [[ $# -gt 0 ]]; do
             usage
             ;;
         *)
-            echo "Unknown option: $1"
+            echo "Opción desconocida: $1"
             exit 1
             ;;
     esac
 done
 
-# Execute main function
+# Ejecutar función principal
 main "$@"
 
 ```

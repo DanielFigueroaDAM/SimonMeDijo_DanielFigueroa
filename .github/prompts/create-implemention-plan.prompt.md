@@ -1,158 +1,151 @@
 ---
 agent: 'agent'
-description: 'Create a new implementation plan file for new features, refactoring existing code or upgrading packages, design, architecture or infrastructure.'
+description: 'Crear un nuevo archivo de plan de implementación para nuevas características, refactorización de código existente o actualización de paquetes, diseño, arquitectura o infraestructura.'
 tools: ['changes', 'search/codebase', 'edit/editFiles', 'extensions', 'fetch', 'githubRepo', 'openSimpleBrowser', 'problems', 'runTasks', 'search', 'search/searchResults', 'runCommands/terminalLastCommand', 'runCommands/terminalSelection', 'testFailure', 'usages', 'vscodeAPI']
 ---
-# Create Implementation Plan
+# Crear Plan de Implementación
 
-## Primary Directive
+## Directiva Principal
 
-Your goal is to create a new implementation plan file for `${input:PlanPurpose}`. Your output must be machine-readable, deterministic, and structured for autonomous execution by other AI systems or humans.
-Use "Galego" languaje to redact the plan
+Tu objetivo es crear un nuevo archivo de plan de implementación para `${input:PlanPurpose}`. Tu salida debe ser legible por máquina, determinista y estructurada para la ejecución autónoma por otros sistemas de IA o humanos.
+Usa el idioma "Español" para redactar el plan.
 
-## Execution Context
+## Contexto de Ejecución
 
-This prompt is designed for AI-to-AI communication and automated processing. All instructions must be interpreted literally and executed systematically without human interpretation or clarification.
+Este prompt está diseñado para la comunicación de IA a IA y el procesamiento automatizado. Todas las instrucciones deben interpretarse literalmente y ejecutarse sistemáticamente sin interpretación o aclaración humana.
 
-## Core Requirements
+## Requisitos Fundamentales
 
-- Generate implementation plans that are fully executable by AI agents or humans
-- Use deterministic language with zero ambiguity
-- Structure all content for automated parsing and execution
-- Ensure complete self-containment with no external dependencies for understanding
+- Generar planes de implementación que sean completamente ejecutables por agentes de IA o humanos.
+- Usar un lenguaje determinista sin ambigüedades.
+- Estructurar todo el contenido para el análisis y la ejecución automatizados.
+- Asegurar la autocontención completa sin dependencias externas para la comprensión.
 
-## Plan Structure Requirements
+## Requisitos de Estructura del Plan
 
-Plans must consist of discrete, atomic phases containing executable tasks. Each phase must be independently processable by AI agents or humans without cross-phase dependencies unless explicitly declared.
+Los planes deben consistir en fases discretas y atómicas que contengan tareas ejecutables. Cada fase debe poder ser procesada de forma independiente por agentes de IA o humanos sin dependencias entre fases, a menos que se declaren explícitamente.
 
-## Phase Architecture
+## Arquitectura de Fases
 
-- Each phase must have measurable completion criteria
-- Tasks within phases must be executable in parallel unless dependencies are specified
-- All task descriptions must include specific file paths, function names, and exact implementation details
-- No task should require human interpretation or decision-making
+- Cada fase debe tener criterios de finalización medibles.
+- Las tareas dentro de las fases deben ser ejecutables en paralelo, a menos que se especifiquen dependencias.
+- Todas las descripciones de tareas deben incluir rutas de archivo específicas, nombres de funciones y detalles de implementación exactos.
+- Ninguna tarea debe requerir interpretación o toma de decisiones humanas.
 
-## AI-Optimized Implementation Standards
+## Estándares de Implementación Optimizados para IA
 
-- Use explicit, unambiguous language with zero interpretation required
-- Structure all content as machine-parseable formats (tables, lists, structured data)
-- Include specific file paths, line numbers, and exact code references where applicable
-- Define all variables, constants, and configuration values explicitly
-- Provide complete context within each task description
-- Use standardized prefixes for all identifiers (REQ-, TASK-, etc.)
-- Include validation criteria that can be automatically verified
+- Usa un lenguaje explícito y sin ambigüedades que no requiera interpretación.
+- Estructura todo el contenido en formatos analizables por máquina (tablas, listas, datos estructurados).
+- Incluye rutas de archivo específicas, números de línea y referencias de código exactas cuando sea aplicable.
+- Define explícitamente todas las variables, constantes y valores de configuración.
+- Proporciona un contexto completo dentro de cada descripción de tarea.
+- Usa prefijos estandarizados para todos los identificadores (REQ-, TASK-, etc.).
+- Incluye criterios de validación que se puedan verificar automáticamente.
 
-## Output File Specifications
+## Especificaciones del Archivo de Salida
 
-- Save implementation plan files in `/plan/` directory
-- Use naming convention: `[purpose]-[component]-[version].md`
-- Purpose prefixes: `upgrade|refactor|feature|data|infrastructure|process|architecture|design`
-- Example: `upgrade-system-command-4.md`, `feature-auth-module-1.md`
-- File must be valid Markdown with proper front matter structure
+- Guarda los archivos del plan de implementación en el directorio `/plan/`.
+- Usa la convención de nomenclatura: `[proposito]-[componente]-[version].md`.
+- Prefijos de propósito: `upgrade|refactor|feature|data|infrastructure|process|architecture|design`.
+- Ejemplo: `upgrade-system-command-4.md`, `feature-auth-module-1.md`.
+- El archivo debe ser un Markdown válido con una estructura de front matter adecuada.
 
-## Mandatory Template Structure
+## Estructura de Plantilla Obligatoria
 
-All implementation plans must strictly adhere to the following template. Each section is required and must be populated with specific, actionable content. AI agents must validate template compliance before execution.
+Todos los planes de implementación deben adherirse estrictamente a la siguiente plantilla. Cada sección es obligatoria y debe completarse con contenido específico y procesable. Los agentes de IA deben validar el cumplimiento de la plantilla antes de la ejecución.
 
-## Template Validation Rules
+## Reglas de Validación de Plantilla
 
-- All front matter fields must be present and properly formatted
-- All section headers must match exactly (case-sensitive)
-- All identifier prefixes must follow the specified format
-- Tables must include all required columns
-- No placeholder text may remain in the final output
+- Todos los campos del front matter deben estar presentes y formateados correctamente.
+- Todos los encabezados de sección deben coincidir exactamente (sensible a mayúsculas).
+- Todos los prefijos de identificador deben seguir el formato especificado.
+- Las tablas deben incluir todas las columnas requeridas.
+- No debe quedar ningún texto de marcador de posición en la salida final.
 
-## Status
+## Estado
 
-The status of the implementation plan must be clearly defined in the front matter and must reflect the current state of the plan. The status can be one of the following (status_color in brackets): `Completed` (bright green badge), `In progress` (yellow badge), `Planned` (blue badge), `Deprecated` (red badge), or `On Hold` (orange badge). It should also be displayed as a badge in the introduction section.
+El estado del plan de implementación debe definirse claramente en el front matter y debe reflejar el estado actual del plan. El estado puede ser uno de los siguientes (color del badge entre paréntesis): `Completado` (badge verde brillante), `En progreso` (badge amarillo), `Planificado` (badge azul), `Obsoleto` (badge rojo) o `En espera` (badge naranja). También debe mostrarse como un badge en la sección de introducción.
 
-```md
----
-goal: [Concise Title Describing the Package Implementation Plan's Goal]
-version: [Optional: e.g., 1.0, Date]
-date_created: [YYYY-MM-DD]
-last_updated: [Optional: YYYY-MM-DD]
-owner: [Optional: Team/Individual responsible for this spec]
-status: 'Completed'|'In progress'|'Planned'|'Deprecated'|'On Hold'
-tags: [Optional: List of relevant tags or categories, e.g., `feature`, `upgrade`, `chore`, `architecture`, `migration`, `bug` etc]
----
+# Plan de Desarrollo: [Nombre del Proyecto]
 
-# Introduction
+![Estado: PLANIFICANDO](https://img.shields.io/badge/estado-PLANIFICANDO-ffaa00)
+![Prioridad: ALTA](https://img.shields.io/badge/prioridad-ALTA-red)
+![Esfuerzo: MEDIO](https://img.shields.io/badge/esfuerzo-MEDIO-yellow)
 
-![Status: <status>](https://img.shields.io/badge/status-<status>-<status_color>)
+**Versión**: 1.0  
+**Última actualización**: [Fecha]  
+**Propietario**: [Tu nombre]
 
-[A short concise introduction to the plan and the goal it is intended to achieve.]
+## 🎯 Objetivo Principal
+[Describe en 1-2 oraciones QUÉ vas a construir y POR QUÉ es valioso]
 
-## 1. Requirements & Constraints
+**Ejemplo**: "Desarrollar una aplicación web para gestionar mis gastos personales que me permita visualizar patrones de gasto y establecer presupuestos mensuales de forma intuitiva."
 
-[Explicitly list all requirements & constraints that affect the plan and constrain how it is implemented. Use bullet points or tables for clarity.]
+## 📋 Contexto y Motivación
 
-- **REQ-001**: Requirement 1
-- **SEC-001**: Security Requirement 1
-- **[3 LETTERS]-001**: Other Requirement 1
-- **CON-001**: Constraint 1
-- **GUD-001**: Guideline 1
-- **PAT-001**: Pattern to follow 1
+### ¿Por qué este proyecto?
+- [ ] **Necesidad personal**: [Explica tu necesidad]
+- [ ] **Aprendizaje**: [Qué tecnologías/qué conceptos quieres aprender]
+- [ ] **Portafolio**: [Si aplica para mostrar habilidades]
 
-## 2. Implementation Steps
+### ¿Qué problema resuelve?
+1. Problema actual: [Describe la situación actual]
+2. Solución propuesta: [Cómo este proyecto lo mejora]
 
-### Implementation Phase 1
+## 🎨 Alcance (Scope)
 
-- GOAL-001: [Describe the goal of this phase, e.g., "Implement feature X", "Refactor module Y", etc.]
+### ✅ INCLUIDO
+- [ ] Feature 1: [Descripción breve]
+- [ ] Feature 2: [Descripción breve]
+- [ ] Feature 3: [Descripción breve]
 
-| Task | Description | Completed | Date |
-|------|-------------|-----------|------|
-| TASK-001 | Description of task 1 | ✅ | 2025-04-25 |
-| TASK-002 | Description of task 2 | |  |
-| TASK-003 | Description of task 3 | |  |
+### ❌ NO INCLUIDO (por ahora)
+- [ ] Feature complejo que postergas
+- [ ] Integración que no es esencial
+- [ ] Optimización que puede venir después
 
-### Implementation Phase 2
+## 🛠️ Stack Tecnológico
 
-- GOAL-002: [Describe the goal of this phase, e.g., "Implement feature X", "Refactor module Y", etc.]
+| Categoría | Tecnología Elegida | Justificación |
+|-----------|-------------------|---------------|
+| Frontend | React / Vue / Svelte | [Por qué esta elección] |
+| Backend | Node.js / Python / Sin backend | [Razón] |
+| Base de datos | SQLite / PostgreSQL / Firebase | [Ventajas para tu caso] |
+| Estilos | Tailwind / CSS Modules | [Preferencia] |
+| Hosting | Vercel / Netlify / GitHub Pages | [Costo/facilidad] |
 
-| Task | Description | Completed | Date |
-|------|-------------|-----------|------|
-| TASK-004 | Description of task 4 | |  |
-| TASK-005 | Description of task 5 | |  |
-| TASK-006 | Description of task 6 | |  |
+## 📅 Plan de Acción
 
-## 3. Alternatives
+### Fase 1: Prototipo Funcional (Semana 1)
+**Objetivo**: Tener algo que funcione end-to-end
 
-[A bullet point list of any alternative approaches that were considered and why they were not chosen. This helps to provide context and rationale for the chosen approach.]
+| Tarea | Estado | Notas |
+|-------|--------|-------|
+| Setup del proyecto | ✅ | Usar vite/create-react-app |
+| Diseño de la estructura base | 🔄 | Definir componentes principales |
+| Implementar flujo básico | ⏳ | CRUD simple |
+| Primer deploy | | Subir a hosting |
 
-- **ALT-001**: Alternative approach 1
-- **ALT-002**: Alternative approach 2
+### Fase 2: Features Esenciales (Semana 2-3)
+**Objetivo**: Implementar las funcionalidades clave
 
-## 4. Dependencies
+| Tarea | Prioridad | Estimación |
+|-------|-----------|------------|
+| [ ] Feature principal 1 | Alta | 2 días |
+| [ ] Feature principal 2 | Alta | 1.5 días |
+| [ ] Sistema de persistencia | Media | 1 día |
+| [ ] UI/UX mejorado | Baja | 2 días |
 
-[List any dependencies that need to be addressed, such as libraries, frameworks, or other components that the plan relies on.]
+### Fase 3: Pulido y Mejoras (Semana 4)
+**Objetivo**: Hacerlo presentable y usable
 
-- **DEP-001**: Dependency 1
-- **DEP-002**: Dependency 2
+| Tarea | Descripción | Depende de |
+|-------|-------------|------------|
+| [ ] Responsive design | Que funcione en móvil | Fase 2 |
+| [ ] Manejo de errores | Feedback al usuario | Fase 2 |
+| [ ] Optimizaciones | Performance básica | Fase 2 |
+| [ ] Documentación | README y comentarios | Todo |
 
-## 5. Files
+## 📊 Sistema de Seguimiento
 
-[List the files that will be affected by the feature or refactoring task.]
-
-- **FILE-001**: Description of file 1
-- **FILE-002**: Description of file 2
-
-## 6. Testing
-
-[List the tests that need to be implemented to verify the feature or refactoring task.]
-
-- **TEST-001**: Description of test 1
-- **TEST-002**: Description of test 2
-
-## 7. Risks & Assumptions
-
-[List any risks or assumptions related to the implementation of the plan.]
-
-- **RISK-001**: Risk 1
-- **ASSUMPTION-001**: Assumption 1
-
-## 8. Related Specifications / Further Reading
-
-[Link to related spec 1]
-[Link to relevant external documentation]
-```
+### Tablero Kanban Personal

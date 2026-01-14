@@ -1,3 +1,2 @@
-- Fai as mensaxes en "galego"
-- Escribe sempre un mensaxe curto e logo uma descripción máis extensa
-
+- Haz los mensajes de commit en español
+- Escribe siempre un mensaje corto y luego una descripción más extensa
