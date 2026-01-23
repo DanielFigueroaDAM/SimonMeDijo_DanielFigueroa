@@ -12,6 +12,9 @@ import java.util.Date
 
 object MongoController: Conexion {
     override fun obtenerRecord(context: Context): Record {
+
+
+
     }
 
     override fun actualizarRecord(
@@ -27,9 +30,7 @@ object MongoController: Conexion {
             val doc = nuevoRecord
             collection.insertOne(doc)
         }
-        return Record(nuevoRecord, fecha)
-        }
-
+        return nuevoRecord
     }
 
     suspend fun setupConnection(
