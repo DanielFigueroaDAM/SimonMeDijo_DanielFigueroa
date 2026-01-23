@@ -106,4 +106,12 @@ dependencies {
     implementation("androidx.room:room-paging:$room_version")
 
 
+
+    // para mongodb atlas
+    implementation("org.mongodb:mongodb-driver-kotlin-coroutine:5.6.2")
+    implementation("org.slf4j:slf4j-simple:1.7.9")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.4.1")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
+
+
 }
