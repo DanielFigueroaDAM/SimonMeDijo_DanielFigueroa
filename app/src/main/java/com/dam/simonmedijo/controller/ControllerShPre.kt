@@ -29,7 +29,7 @@ object ControllerShPre : Conexion {
      * @author Daniel Figueroa Vidal
      * @param context Contexto de la aplicación
      */
-    override fun obtenerRecord(context: Context): Record {
+    override suspend fun obtenerRecord(context: Context): Record {
         val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val recordValue: Int = sharedPreferences.getInt(KEY_RECORD, 0)
         val fechaString: String? = sharedPreferences.getString(KEY_FECHA, null)
@@ -56,7 +56,7 @@ object ControllerShPre : Conexion {
      * @param fecha Date
      * @param context Contexto de la aplicación
      */
-    override fun actualizarRecord(nuevoRecord: Int, fecha: Date, context: Context): Record {
+    override suspend fun actualizarRecord(nuevoRecord: Int, fecha: Date, context: Context): Record {
         val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         //Usar el método .format() de nuestro formateador
         val stringData = FORMATO_FECHA.format(fecha)

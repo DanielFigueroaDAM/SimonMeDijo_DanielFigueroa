@@ -20,7 +20,7 @@ object ControllerSQLite : Conexion {
      * Obtiene el ultimo Record de la base de datos SQLite.
      * @param context El contexto de la aplicación, necesario para acceder a la base de datos.
      */
-    override fun obtenerRecord(context: Context): Record {
+    override suspend fun obtenerRecord(context: Context): Record {
         val dbHelper = FeedReaderDbHelper(context)
         val db = dbHelper.readableDatabase
 
@@ -74,7 +74,7 @@ object ControllerSQLite : Conexion {
     * @param context El contexto de la aplicación, necesario para acceder a la base de datos.
     * @return Devuelve el objeto Record que se acaba de guardar.
     */
-    override fun actualizarRecord(
+    override suspend fun actualizarRecord(
         nuevoRecord: Int,
         fecha: Date,
         context: Context

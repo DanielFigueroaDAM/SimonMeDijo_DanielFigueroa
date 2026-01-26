@@ -13,7 +13,7 @@ object RoomController: Conexion {
      * Obtiene el ultimo record de la base de datos
      * @param context El contexto de la aplicación.
      */
-    override fun obtenerRecord(context: Context): Record {
+    override suspend fun obtenerRecord(context: Context): Record {
         /*
             No es recomendable usar "allowMainThreadQueries()" porq si la consulta es grande puede saturar la UI.
             Pero para este caso no debería ser un problema, habría que implementar lauch o funciones suspend
@@ -35,7 +35,7 @@ object RoomController: Conexion {
      * @param nuevoRecord El nuevo record a actualizar.
      * @param fecha La fecha asociada al nuevo record.
      */
-    override fun actualizarRecord(
+    override suspend fun actualizarRecord(
         nuevoRecord: Int,
         fecha: Date,
         context: Context
