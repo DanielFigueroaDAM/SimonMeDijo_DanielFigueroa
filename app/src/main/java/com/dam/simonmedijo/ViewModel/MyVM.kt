@@ -28,8 +28,7 @@ class MyVM(application: Application) : AndroidViewModel(application){
 
     init {
         viewModelScope.launch {
-            record.value =
-                MongoController.obtenerRecordSuspend(getApplication()).record // Obtenemos el record de las preferencias
+            record.value = MongoController.obtenerRecord(getApplication()).record // Obtenemos el record de las preferencias
         }
     }
 
@@ -130,9 +129,9 @@ class MyVM(application: Application) : AndroidViewModel(application){
      */
     fun comprobarRecord(){
         viewModelScope.launch {
-            if (Datos.ronda.value > MongoController.obtenerRecordSuspend(getApplication()).record) { // Se llama al controller para obtener el record
+            if (Datos.ronda.value > MongoController.obtenerRecord(getApplication()).record) { // Se llama al controller para obtener el record
                 record.value = Datos.ronda.value
-                MongoController.actualizarRecordSuspend(
+                MongoController.actualizarRecord(
                     Datos.ronda.value,
                     Date(),
                     getApplication()
