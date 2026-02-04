@@ -121,7 +121,6 @@ class MyVM(application: Application) : AndroidViewModel(application){
      */
     fun comprobarRecord(){
         ControllerSQLite.leerBaseDatos(getApplication())
-        record.value = Datos.ronda.value
         ControllerSQLite.manejadorRecords(nuevoRecord=Datos.ronda.value, fecha =  Date(), context=getApplication()) // Se actualiza en el caso de que sea necesario
 
     }

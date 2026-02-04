@@ -30,6 +30,7 @@ object ControllerSQLite : Conexion {
         // 2. Ordena por puntuacion en orden DESCENDENTE (el más nuevo aparecerá primero)
         val sortOrder = "${miTabla.PUNTUACION} DESC"
 
+
         // 3. Añade el LÍMITE de 1 para que la base de datos solo devuelva un resultado
         val limit = "1"
 
@@ -40,7 +41,7 @@ object ControllerSQLite : Conexion {
             null,                 // Argumentos del WHERE (ninguno)
             null,                 // No agrupar las filas
             null,                 // No filtrar por grupos
-            sortOrder,            // Ordenar por fecha, más nuevo primero
+            sortOrder,            // Ordenar por puntuacion, más nuevo primero
             limit                 // Límite de 1 resultado
         )
 
