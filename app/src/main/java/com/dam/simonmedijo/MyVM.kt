@@ -1,6 +1,7 @@
 package com.dam.simonmedijo
 
 import android.app.Application
+import android.service.controls.Control
 import android.util.Log
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.AndroidViewModel
@@ -119,10 +120,10 @@ class MyVM(application: Application) : AndroidViewModel(application){
      * @author Daniel Figueroa Vidal
      */
     fun comprobarRecord(){
-        if(Datos.ronda.value > ControllerSQLite.obtenerRecord(getApplication()).record) { // Se llama al controller para obtener el record
-            record.value = Datos.ronda.value
-            ControllerSQLite.actualizarRecord(Datos.ronda.value, Date(), getApplication()) // Se actualiza en el caso de que sea necesario
-        }
+        ControllerSQLite.leerBaseDatos(getApplication())
+        record.value = Datos.ronda.value
+        ControllerSQLite.manejadorRecords(nuevoRecord=Datos.ronda.value, fecha =  Date(), context=getApplication()) // Se actualiza en el caso de que sea necesario
+
     }
 
 }
