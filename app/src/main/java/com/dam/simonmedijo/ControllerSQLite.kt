@@ -27,8 +27,8 @@ object ControllerSQLite : Conexion {
         // 1. Define las columnas que quieres obtener
         val projection = arrayOf(miTabla.PUNTUACION, miTabla.FECHA)
 
-        // 2. Ordena por fecha en orden DESCENDENTE (el más nuevo aparecerá primero)
-        val sortOrder = "${miTabla.FECHA} DESC"
+        // 2. Ordena por puntuacion en orden DESCENDENTE (el más nuevo aparecerá primero)
+        val sortOrder = "${miTabla.PUNTUACION} DESC"
 
         // 3. Añade el LÍMITE de 1 para que la base de datos solo devuelva un resultado
         val limit = "1"
