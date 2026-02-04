@@ -6,10 +6,12 @@ package com.dam.simonmedijo.controller.room
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import com.dam.simonmedijo.model.Datos
 
 @Entity(tableName = "records")
 data class RecordEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val record: Int,
-    val fecha: Long
+    val fecha: Long,
+    val nombre:String
 )

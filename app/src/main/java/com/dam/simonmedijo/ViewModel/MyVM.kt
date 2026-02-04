@@ -21,6 +21,9 @@ class MyVM(application: Application) : AndroidViewModel(application){
     var posicion = 0 // Esta es la posición de secuencia de elección del usuario
 
 
+    var nombre = Datos.nombreJugador.value
+
+
 
     init {
         record.value = RoomController.obtenerRecord(getApplication()).record // Obtenemos el record de las preferencias
