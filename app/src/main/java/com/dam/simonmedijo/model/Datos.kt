@@ -25,6 +25,8 @@ object Datos {
         var sonidoError3 = 0
         var sonidoError4 = 0
 
+        var nombreJugador = MutableStateFlow("Anonimo")
+
 }
 
 /**

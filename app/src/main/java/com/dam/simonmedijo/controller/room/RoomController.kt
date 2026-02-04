@@ -3,6 +3,7 @@ package com.dam.simonmedijo.controller.room
 import android.content.Context
 import androidx.room.Room
 import com.dam.simonmedijo.controller.Conexion
+import com.dam.simonmedijo.model.Datos
 import com.dam.simonmedijo.model.Record
 import java.util.Date
 
@@ -26,6 +27,13 @@ object RoomController: Conexion {
         // Puede retornar un nulo, si retorna un nulo devuelve un record a 0 con la fecha actual
         val miRecord = db.recordDao().getRecord() ?: return Record(0, Date())
         db.close()
+
+
+        //se que esto no deberia estar aqui
+        Datos.nombreJugador.value = miRecord.nombre
+
+
+
         //Pasamos de nuestro RecordEntity a nuestroRecord
         return Record(miRecord.record, Date(miRecord.fecha))
     }
@@ -46,7 +54,8 @@ object RoomController: Conexion {
             AppDatabase::class.java, "base-record"
         ).allowMainThreadQueries().build()
         // insertamos el nuevo record
-        val miNuevoRecord =db.recordDao().insert(RecordEntity(record = nuevoRecord, fecha = fecha.time))
+
+        val miNuevoRecord =db.recordDao().insert(RecordEntity(record = nuevoRecord, fecha = fecha.time, nombre=Datos.nombreJugador.value))
         db.close()
         return Record(nuevoRecord, fecha)
     }
